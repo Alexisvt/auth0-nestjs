@@ -1,4 +1,14 @@
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class ItemService {}
+export class ItemService {
+  private readonly items: string[] = ['Pizza', 'Coke'];
+
+  findAll(): string[] {
+    return this.items;
+  }
+
+  create(item: string) {
+    this.items.push(item);
+  }
+}
