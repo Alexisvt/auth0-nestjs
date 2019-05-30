@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Item } from 'src/models/item.interface';
 
 import { ItemService as ItemsService } from './services/item.service';
 
@@ -7,12 +8,12 @@ export class ItemsController {
   constructor(private readonly itemsService: ItemsService) {}
 
   @Get()
-  async findAll(): Promise<string[]> {
+  async findAll(): Promise<Item[]> {
     return this.itemsService.findAll();
   }
 
   @Post()
-  async create(@Body() item: string) {
+  async create(@Body() item: Item) {
     this.itemsService.create(item);
   }
 }
